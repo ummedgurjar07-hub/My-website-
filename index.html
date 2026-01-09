@@ -1,84 +1,100 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Ronak Enterprises | Tiles Contractor</title>
-  <style>
-    body { font-family: Arial; margin:0; background:#f5f5f5; }
-    header { background:#c0392b; color:white; padding:20px; text-align:center; }
-    section { padding:20px; background:white; margin:10px; border-radius:8px; }
-    h2 { color:#c0392b; }
-    .btn { background:#27ae60; color:white; padding:10px 15px; text-decoration:none; border-radius:5px; }
-    input, textarea, select { width:100%; padding:8px; margin:5px 0; }
-    footer { background:#333; color:white; text-align:center; padding:10px; }
-  </style>
+<meta charset="UTF-8">
+<title>Vinayak Boys & Girls Hostel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+    font-family:Arial;
+    margin:0;
+    background:#f2f2f2;
+}
+header{
+    background:#2c3e50;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+.section{
+    background:white;
+    margin:20px;
+    padding:20px;
+    border-radius:10px;
+}
+input{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+}
+button{
+    background:#27ae60;
+    color:white;
+    padding:10px;
+    border:none;
+    width:100%;
+    cursor:pointer;
+}
+.result{
+    margin-top:15px;
+    font-size:18px;
+    font-weight:bold;
+}
+footer{
+    background:#2c3e50;
+    color:white;
+    text-align:center;
+    padding:10px;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <h1>Ronak Enterprises</h1>
-  <p>Tiles • Granite • Marble Contractor</p>
-  <p><b>Director:</b> Jairam Gurjar</p>
-  <p>📞 9409473652 | 7201822093</p>
+<h1>Vinayak Boys & Girls Hostel</h1>
+<p>Director: Ramotar Kalsh</p>
 </header>
 
-<section>
-  <h2>🏢 Company Address</h2>
-  <p>Saffron City, Dahej Jolva, Bharuch</p>
-</section>
+<div class="section">
+<h2>Student Monthly Fees</h2>
 
-<section>
-  <h2>🛠️ Our Services</h2>
-  <ul>
-    <li>Tiles Fixing</li>
-    <li>Granite Work</li>
-    <li>Marble Flooring</li>
-    <li>Commercial & Residential Projects</li>
-  </ul>
-</section>
+<input type="text" id="name" placeholder="Enter Student Name">
+<input type="text" id="room" placeholder="Enter Room Number">
+<input type="number" id="fees" placeholder="Enter Paid Fees (₹)">
 
-<section>
-  <h2>👷 Worker Detail Form</h2>
-  <input placeholder="Worker Name">
-  <input placeholder="Mobile Number">
-  <input placeholder="Daily Wage">
-  <select>
-    <option>Today Worked?</option>
-    <option>Yes</option>
-    <option>No</option>
-  </select>
-  <button class="btn">Save (Demo)</button>
-</section>
+<button onclick="checkFees()">Submit Fees</button>
 
-<section>
-  <h2>🧾 Company Bill Entry</h2>
-  <input placeholder="Client Name">
-  <input placeholder="Site Location">
-  <input placeholder="Amount">
-  <textarea placeholder="Work Details"></textarea>
-  <button class="btn">Add Bill (Demo)</button>
-</section>
+<div id="output" class="result"></div>
+</div>
 
-<section>
-  <h2>📸 Photo Gallery</h2>
-  <p>(Yahan aage images add hongi)</p>
-</section>
+<script>
+function checkFees(){
+    let name = document.getElementById("name").value;
+    let room = document.getElementById("room").value;
+    let fees = document.getElementById("fees").value;
 
-<section>
-  <h2>🔐 Login (Demo)</h2>
-  <input placeholder="Email / Mobile">
-  <input placeholder="Password">
-  <button class="btn">Login</button>
-</section>
+    let monthlyFees = 5000;   // Hostel monthly fees
 
-<section>
-  <h2>💬 WhatsApp Contact</h2>
-  <a class="btn" href="https://wa.me/919409473652">Chat on WhatsApp</a>
-</section>
+    if(name=="" || room=="" || fees==""){
+        document.getElementById("output").innerHTML = "Please fill all details!";
+        return;
+    }
+
+    if(fees < monthlyFees){
+        document.getElementById("output").innerHTML =
+        "❌ Fees Incomplete! " + name + " (Room " + room + ") has paid ₹" + fees +
+        ". Pending ₹" + (monthlyFees - fees);
+    }
+    else{
+        document.getElementById("output").innerHTML =
+        "✅ Fees Paid Successfully! " + name + " (Room " + room + ")";
+    }
+}
+</script>
 
 <footer>
-  <p>© Ronak Enterprises | Tiles Contractor</p>
+<p>© 2026 Vinayak Boys & Girls Hostel</p>
 </footer>
 
 </body>
