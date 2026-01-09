@@ -1,27 +1,71 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Vinayak Boys & Girls Hostel</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vinayak Hostel Fees</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body{
-    font-family:Arial;
-    margin:0;
-    background:#f2f2f2;
+body{font-family:Arial;background:#f2f2f2;}
+.box{background:white;padding:20px;margin:20px;border-radius:10px;}
+input,button{width:100%;padding:10px;margin:10px 0;}
+button{background:#27ae60;color:white;border:none;}
+.msg{font-weight:bold;margin-top:15px;}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+<h2>Student Details</h2>
+<input id="name" placeholder="Student Name">
+<input id="room" placeholder="Room No">
+<input id="parent" placeholder="Parent Mobile No">
+</div>
+
+<div class="box">
+<h2>Director Login</h2>
+<input type="password" id="pass" placeholder="Director Password">
+<input type="number" id="fees" placeholder="Enter Paid Fees">
+<button onclick="submitFees()">Submit Fees</button>
+
+<div id="output" class="msg"></div>
+<div id="sms" class="msg"></div>
+</div>
+
+<script>
+let monthlyFees = 7000;
+let directorPass = "ramotar";
+
+function submitFees(){
+    let name = document.getElementById("name").value;
+    let room = document.getElementById("room").value;
+    let parent = document.getElementById("parent").value;
+    let pass = document.getElementById("pass").value;
+    let fees = document.getElementById("fees").value;
+
+    if(pass !== directorPass){
+        document.getElementById("output").innerHTML = "❌ Wrong Director Password";
+        return;
+    }
+
+    if(fees < monthlyFees){
+        document.getElementById("output").innerHTML =
+        "❌ Fees Incomplete! Pending ₹" + (monthlyFees - fees);
+    } else {
+        document.getElementById("output").innerHTML =
+        "✅ Fees Received for " + name + " (Room " + room + ")";
+    }
+
+    // SMS Preview
+    document.getElementById("sms").innerHTML =
+    "📱 SMS to Parent ("+parent+"):<br>" +
+    "Dear Parent, " + name + " (Room "+room+") hostel fees ₹"+fees+
+    " received. Monthly fees ₹7000. - Vinayak Hostel";
 }
-header{
-    background:#2c3e50;
-    color:white;
-    text-align:center;
-    padding:20px;
-}
-.section{
-    background:white;
-    margin:20px;
-    padding:20px;
-    border-radius:10px;
-}
+</script>
+
+</body>
+</html>
 input{
     width:100%;
     padding:10px;
